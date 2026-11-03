@@ -12,7 +12,7 @@ from .routers import auth, content, flashcards, progress
 if not JWT_SECRET:
     raise RuntimeError("JWT_SECRET is not set. Add it to server/.env.")
 
-app = FastAPI(title="DSA Study Lab API")
+app = FastAPI(title="AlgoLoom API")
 
 
 @app.exception_handler(HTTPException)
@@ -29,7 +29,7 @@ async def validation_error(_: Request, exc: RequestValidationError):
 
 @app.get("/api/health")
 def health():
-    return {"success": True, "message": "DSA Study Lab API is running!"}
+    return {"success": True, "message": "AlgoLoom API is running!"}
 
 
 app.include_router(auth.router)

@@ -1,4 +1,4 @@
-# DSA Study Lab
+# AlgoLoom
 
 A full-stack app for learning data structures and algorithms in Python: short lessons, step-by-step visualizers that highlight the running line of Python, practice problems you solve in the browser, and quizzes, with progress saved to your account.
 

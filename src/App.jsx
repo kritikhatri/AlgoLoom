@@ -49,7 +49,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        DSA Study Lab · React, FastAPI, PostgreSQL &amp; Python in your browser
+        AlgoLoom · React, FastAPI, PostgreSQL &amp; Python in your browser
       </footer>
 
       {authOpen && <AuthModal />}

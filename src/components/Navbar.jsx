@@ -51,7 +51,7 @@ function Navbar() {
           <span className="brand-mark" aria-hidden="true">
             <i /><i /><i /><i />
           </span>
-          <span>DSA Study Lab</span>
+          <span>AlgoLoom</span>
         </Link>
 
         <nav className="nav-links" aria-label="Main">
