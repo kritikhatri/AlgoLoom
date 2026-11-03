@@ -7,10 +7,13 @@ load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 
 def _database_url() -> str:
-    url = os.environ.get("DATABASE_URL", "")
-    # SQLAlchemy needs the driver name; plain postgres URLs default to psycopg 3.
-    if url.startswith("postgresql://"):
-        return url.replace("postgresql://", "postgresql+psycopg://", 1)
+    # Hosting dashboards make it easy to paste stray spaces or quotes around the value.
+    url = os.environ.get("DATABASE_URL", "").strip().strip("'\"").strip()
+    # SQLAlchemy needs the driver name. Hosted providers often use the short
+    # "postgres://" scheme; both map to psycopg 3.
+    for scheme in ("postgresql://", "postgres://"):
+        if url.startswith(scheme):
+            return "postgresql+psycopg://" + url[len(scheme):]
     return url
 
 

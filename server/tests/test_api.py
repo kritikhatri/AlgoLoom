@@ -140,3 +140,15 @@ def test_daily_and_patterns(client):
     assert client.get("/api/daily").json()["problem"]["id"]
     data = client.get("/api/patterns").json()
     assert all(q["answer"] in data["techniques"] for q in data["questions"])
+
+
+def test_database_url_normalisation(monkeypatch):
+    from app import config
+
+    for raw in (
+        'postgres://u:p@host:5432/db',
+        '"postgresql://u:p@host:5432/db"',
+        "  postgresql://u:p@host:5432/db \n",
+    ):
+        monkeypatch.setenv("DATABASE_URL", raw)
+        assert config._database_url() == "postgresql+psycopg://u:p@host:5432/db"
